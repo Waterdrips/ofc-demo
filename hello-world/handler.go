@@ -54,21 +54,18 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 func processCommand(w http.ResponseWriter, command, text string) bool {
 
-		switch command {
-		case "/hello-bot":
-			if len(text) == 0 {
-				w.Write([]byte("Please give a function name with this slash command"))
-				w.WriteHeader(http.StatusOK)
-				return true
-			}
-
-
-
+	switch command {
+	case "/hello-bot":
+		if len(text) == 0 {
+			w.Write([]byte("Please give a function name with this slash command"))
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte(text))
 			return true
 		}
 
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(text))
+		return true
+	}
+
 	return false
 }
-
