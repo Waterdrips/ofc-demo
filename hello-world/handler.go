@@ -19,12 +19,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		input = body
 	}
 
-	token, err := sdk.ReadSecret("token")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
 	var query *url.Values
 	if len(input) > 0 {
 		q, err := url.ParseQuery(string(input))
@@ -35,10 +29,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		query = &q
 	}
 
-	if token != query.Get("token") {
-		http.Error(w, fmt.Sprintf("Token: %s, invalid", query.Get("token")), http.StatusUnauthorized)
-		return
-	}
+	//if token != query.Get("token") {
+	//	http.Error(w, fmt.Sprintf("Token: %s, invalid", query.Get("token")), http.StatusUnauthorized)
+	//	return
+	//}
 
 	command := query.Get("command")
 	text := query.Get("text")
