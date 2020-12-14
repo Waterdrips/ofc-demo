@@ -2,7 +2,6 @@ package function
 
 import (
 	"fmt"
-	"github.com/openfaas/openfaas-cloud/sdk"
 	"io/ioutil"
 	"net/http"
 	"net/url"
