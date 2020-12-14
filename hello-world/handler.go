@@ -32,6 +32,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	//	http.Error(w, fmt.Sprintf("Token: %s, invalid", query.Get("token")), http.StatusUnauthorized)
 	//	return
 	//}
+	var body []byte
+
+	r.Body.Read(body)
+
+	os.Stderr.Write(body)
 
 	command := query.Get("command")
 	text := query.Get("text")
