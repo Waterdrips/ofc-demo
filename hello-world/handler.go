@@ -2,7 +2,9 @@ package function
 
 import (
 	"fmt"
+	"github.com/kenshaw/emoji"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -61,7 +63,9 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		}
 
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(text))
+		n := emoji.ReplaceEmoticonsWithCodes(text)
+		log.Printf("n: %s", n)
+		w.Write([]byte(n))
 		return true
 	}
 
