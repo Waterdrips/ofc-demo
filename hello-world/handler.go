@@ -81,8 +81,6 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		}
 
 		log.Printf("Response code: %d, content-length:%d", resp.StatusCode, resp.ContentLength)
-		var output []byte
-
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
 
