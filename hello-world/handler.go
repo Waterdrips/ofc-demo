@@ -31,6 +31,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		query = &q
 	}
 
+	
 	//if token != query.Get("token") {
 	//	http.Error(w, fmt.Sprintf("Token: %s, invalid", query.Get("token")), http.StatusUnauthorized)
 	//	return
