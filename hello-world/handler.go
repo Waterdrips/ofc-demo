@@ -64,10 +64,15 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 			return true
 		}
 
-		w.WriteHeader(http.StatusOK)
+		//w.WriteHeader(http.StatusOK)
+		//w.Write([]byte(text))
+		
+		
 		n := emoji.ReplaceEmoticonsWithCodes(text)
 		log.Printf("n: %s", n)
 		w.Write([]byte(n))
+		
+		
 		return true
 	case "/func":
 		fn := strings.Split(text, " ")
