@@ -11,3 +11,7 @@ functions:
     lang: dockerfile
     handler: ./certinfo
     image: certinfo:armhf
+  figlet:
+    lang: dockerfile
+    handler: ./figlet
+    image: figlet:latest
