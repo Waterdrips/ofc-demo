@@ -80,11 +80,8 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 			log.Printf("Error calling gateway %v", err)
 		}
 
-		log.Printf("Response code: %d", resp.StatusCode)
+		log.Printf("Response code: %d, content-length:%d", resp.StatusCode, resp.ContentLength)
 		var output []byte
-		if resp.StatusCode > 299 {
-
-		}
 		resp.Body.Read(output)
 		w.Write(output)
 		return true
