@@ -7,4 +7,7 @@ functions:
     lang: golang-middleware
     handler: ./hello-world
     image: hello-world:latest
-
+  certinfo:
+    lang: dockerfile
+    handler: ./certinfo
+    image: certinfo:armhf

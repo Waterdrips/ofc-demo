@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 )
 
 func Handle(w http.ResponseWriter, r *http.Request) {
@@ -67,6 +68,16 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		log.Printf("n: %s", n)
 		w.Write([]byte(n))
 		return true
+	case "/func":
+		r := strings.NewReader(text)
+		resp, err := http.Post("http://gateway.openfaas.cluster.local/function/certinfo", "text/plain" , r)
+		if err != nil {
+			log.Printf("Error calling gateway %v", err)
+		}
+
+		var output []byte
+		resp.Body.Read(output)
+		w.Write(output)
 	}
 
 	return false
