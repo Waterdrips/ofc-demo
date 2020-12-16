@@ -82,11 +82,14 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 
 		log.Printf("Response code: %d, content-length:%d", resp.StatusCode, resp.ContentLength)
 		var output []byte
-		_, err = resp.Body.Read(output)
+
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+
 		if err != nil {
 			log.Printf("Error reading body %v", err)
 		}
-		w.Write(output)
+		w.Write(body)
 		return true
 	}
 
