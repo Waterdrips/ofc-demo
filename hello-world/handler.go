@@ -70,7 +70,9 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		return true
 	case "/func":
 		r := strings.NewReader(text)
-		resp, err := http.Post("http://gateway.openfaas.cluster.local/function/certinfo", "text/plain", r)
+		fn := strings.Split(text, " ")
+		strings.Join(fn[1:], " ")
+		resp, err := http.Post(fmt.Sprintf("http://gateway.openfaas:8080/function/%s", text), "text/plain", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
