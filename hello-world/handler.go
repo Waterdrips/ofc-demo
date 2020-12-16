@@ -87,7 +87,8 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		if err != nil {
 			log.Printf("Error reading body %v", err)
 		}
-		w.Write(body)
+		wrapped := fmt.Sprintf("```%s```", string(body))
+		w.Write([]byte(wrapped))
 		return true
 	}
 
