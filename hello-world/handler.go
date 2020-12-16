@@ -73,9 +73,9 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		domains := strings.Join(fn[1:], " ")
 		r := strings.NewReader(domains)
 
-		log.Printf("calling function: %s with [%s]", fn, domains)
+		log.Printf("calling function: %s with [%s]", fn[0], domains)
 
-		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", fn), "application/x-www-form-urlencoded", r)
+		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", fn[0]), "application/x-www-form-urlencoded", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
