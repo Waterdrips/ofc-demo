@@ -70,7 +70,7 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		return true
 	case "/func":
 		r := strings.NewReader(text)
-		resp, err := http.Post("http://gateway.openfaas.cluster.local/function/certinfo", "text/plain" , r)
+		resp, err := http.Post("http://gateway.openfaas.cluster.local/function/certinfo", "text/plain", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
