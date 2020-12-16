@@ -72,7 +72,7 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		r := strings.NewReader(text)
 		fn := strings.Split(text, " ")
 		strings.Join(fn[1:], " ")
-		resp, err := http.Post(fmt.Sprintf("http://gateway.openfaas:8080/function/%s", text), "application/x-www-form-urlencoded", r)
+		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", text), "application/x-www-form-urlencoded", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
