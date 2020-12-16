@@ -80,6 +80,7 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		var output []byte
 		resp.Body.Read(output)
 		w.Write(output)
+		return true
 	}
 
 	return false
