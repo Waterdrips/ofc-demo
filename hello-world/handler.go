@@ -72,11 +72,11 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		r := strings.NewReader(text)
 		fn := strings.Split(text, " ")
 		strings.Join(fn[1:], " ")
-		resp, err := http.Post(fmt.Sprintf("http://gateway.openfaas:8080/function/%s", text), "text/plain", r)
+		resp, err := http.Post(fmt.Sprintf("http://gateway.openfaas:8080/function/%s", text), "application/x-www-form-urlencoded", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
-
+		log.Printf("Response code: %d", resp.StatusCode)
 		var output []byte
 		resp.Body.Read(output)
 		w.Write(output)
