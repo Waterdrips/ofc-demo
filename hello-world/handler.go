@@ -72,12 +72,17 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		r := strings.NewReader(text)
 		fn := strings.Split(text, " ")
 		strings.Join(fn[1:], " ")
-		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", text), "application/x-www-form-urlencoded", r)
+		log.Printf("calling function: %s", fn)
+		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", fn), "application/x-www-form-urlencoded", r)
 		if err != nil {
 			log.Printf("Error calling gateway %v", err)
 		}
+
 		log.Printf("Response code: %d", resp.StatusCode)
 		var output []byte
+		if resp.StatusCode > 299 {
+
+		}
 		resp.Body.Read(output)
 		w.Write(output)
 		return true
