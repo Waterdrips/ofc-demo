@@ -28,6 +28,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			w.Write([]byte(err.Error()))
 			w.WriteHeader(http.StatusOK)
+			return
 		}
 		for _, s := range r.ResourceRecordSets {
 			records = append(records, s)
@@ -40,8 +41,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		s = fmt.Sprintf("%s\n%s", s, r.String())
 	}
 	w.Write([]byte(s))
-	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
 }
 
 func readSecrets() {
