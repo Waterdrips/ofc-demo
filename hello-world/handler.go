@@ -31,7 +31,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		query = &q
 	}
 
-	
 	//if token != query.Get("token") {
 	//	http.Error(w, fmt.Sprintf("Token: %s, invalid", query.Get("token")), http.StatusUnauthorized)
 	//	return
@@ -66,13 +65,11 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 
 		//w.WriteHeader(http.StatusOK)
 		//w.Write([]byte(text))
-		
-		
+
 		n := emoji.ReplaceEmoticonsWithCodes(text)
 		log.Printf("n: %s", n)
 		w.Write([]byte(n))
-		
-		
+
 		return true
 	case "/func":
 		fn := strings.Split(text, " ")
