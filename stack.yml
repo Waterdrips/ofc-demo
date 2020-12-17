@@ -3,9 +3,9 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:8080
 functions:
-  hello-world:
+  chatops-bot:
     lang: golang-middleware
-    handler: ./hello-world
+    handler: ./chatops-bot
     image: hello-world:latest
   certinfo:
     lang: dockerfile
