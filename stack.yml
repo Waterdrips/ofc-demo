@@ -7,6 +7,8 @@ functions:
     lang: golang-middleware
     handler: ./chatops-bot
     image: hello-world:latest
+    secrets:
+      - super-secret
   certinfo:
     lang: dockerfile
     handler: ./certinfo
