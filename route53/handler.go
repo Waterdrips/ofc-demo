@@ -40,8 +40,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	for _, r := range records {
 		s = fmt.Sprintf("%s\n%s", s, r.String())
 	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(s))
-	w.Header().Set("content-type", "application/json")
 }
 
 func readSecrets() {
