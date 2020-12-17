@@ -63,8 +63,8 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(text))
 
-		//n := emoji.ReplaceEmoticonsWithCodes(text)
-		//log.Printf("Output: %s", n)
+		n := emoji.ReplaceEmoticonsWithCodes(text)
+		log.Printf("Output: %s", n)
 		//w.Write([]byte(n))
 
 		return true
