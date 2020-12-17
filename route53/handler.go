@@ -39,7 +39,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	for _, r := range records {
 		s = fmt.Sprintf("%s\n%s", s, *r.Name)
 	}
-
+	w.Write([]byte(s))
 	w.WriteHeader(http.StatusOK)
 }
 
