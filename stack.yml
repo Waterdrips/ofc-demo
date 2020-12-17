@@ -18,3 +18,10 @@ functions:
     lang: dockerfile
     handler: ./figlet
     image: figlet:latest
+  route53:
+    lang: golang-middleware
+    handler: ./route53
+    image: route53:latest
+    secrets:
+      - r53
+
