@@ -3,5 +3,5 @@ def handle(req):
     Args:
         req (str): request body
     """
-
+    print("You called?")
     return req
