@@ -3,13 +3,13 @@ package function
 import (
 	"fmt"
 	"github.com/kenshaw/emoji"
+	"github.com/openfaas/openfaas-cloud/sdk"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
-	"github.com/openfaas/openfaas-cloud/sdk"
 )
 
 func Handle(w http.ResponseWriter, r *http.Request) {
