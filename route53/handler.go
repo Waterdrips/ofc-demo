@@ -41,11 +41,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		if len(s) == 0 {
 			s = r.String()
 		} else {
-			s = fmt.Sprintf("%s\n%s", s, r.String())
+			s = fmt.Sprintf("%s\n%s", s, r)
 		}
 	}
 
-	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(s))
 	return
