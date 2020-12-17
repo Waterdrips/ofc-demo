@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/openfaas/openfaas-cloud/sdk"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/openfaas/openfaas-cloud/sdk"
 )
 
 func Handle(w http.ResponseWriter, r *http.Request) {
@@ -15,7 +15,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	readSecrets()
 	sess := session.Must(session.NewSession())
 	client := route53.New(sess)
-	z,err := client.ListHostedZones(&route53.ListHostedZonesInput{})
+	z, err := client.ListHostedZones(&route53.ListHostedZonesInput{})
 	if err != nil {
 		w.Write([]byte(err.Error()))
 		w.WriteHeader(http.StatusOK)
@@ -24,7 +24,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	var records []*route53.ResourceRecordSet
 	for _, zone := range z.HostedZones {
 
-		r, err :=  client.ListResourceRecordSets(&route53.ListResourceRecordSetsInput{HostedZoneId: zone.Id})
+		r, err := client.ListResourceRecordSets(&route53.ListResourceRecordSetsInput{HostedZoneId: zone.Id})
 		if err != nil {
 			w.Write([]byte(err.Error()))
 			w.WriteHeader(http.StatusOK)
