@@ -7,6 +7,7 @@ functions:
     lang: golang-middleware
     handler: ./chatops-bot
     image: hello-world:latest
+    # faas-cli cloud seal --name waterdrips-super-secret --literal super-secret=super-secret-information -c pub-cert.pem
     # secrets:
       # - super-secret
   certinfo:
