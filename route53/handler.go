@@ -38,11 +38,17 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	s := ""
 
 	for _, r := range records {
-		s = fmt.Sprintf("%s\n%s", s, r.String())
+		if len(s) == 0 {
+			s = r.String()
+		} else {
+			s = fmt.Sprintf("%s\n%s", s, r.String())
+		}
 	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(s))
+	return
 }
 
 func readSecrets() {
