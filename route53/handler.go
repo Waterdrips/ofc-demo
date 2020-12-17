@@ -41,7 +41,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		s = fmt.Sprintf("%s\n%s", s, r.String())
 	}
 	w.Write([]byte(s))
-	w.Header().Set("content-type", "applicatoin/json")
+	w.Header().Set("content-type", "application/json")
 }
 
 func readSecrets() {
