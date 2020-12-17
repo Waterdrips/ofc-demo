@@ -71,7 +71,7 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		w.Write([]byte(n))
 
 		return true
-	case "/func":
+	case "/invoke":
 		fn := strings.Split(text, " ")
 		domains := strings.Join(fn[1:], " ")
 		r := strings.NewReader(domains)
