@@ -1,3 +1,10 @@
+# github.com/alexellis/hmac v0.0.0-20180624210714-d5d71edd7bc7
+github.com/alexellis/hmac
 # github.com/kenshaw/emoji v0.1.0
 ## explicit
 github.com/kenshaw/emoji
+# github.com/openfaas/faas-provider v0.0.0-20180910095832-845bf7aa58cb
+github.com/openfaas/faas-provider/auth
+# github.com/openfaas/openfaas-cloud/sdk v0.0.0-20201215121043-ffbb84724081
+## explicit
+github.com/openfaas/openfaas-cloud/sdk

@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"github.com/openfaas/openfaas-cloud/sdk"
 )
 
 func Handle(w http.ResponseWriter, r *http.Request) {
@@ -71,12 +72,20 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		w.Write([]byte(n))
 
 		return true
+	case "/secret":
+		resp, err := sdk.ReadSecret("super-secret")
+		if err != nil {
+			w.Write([]byte(err.Error()))
+			return true
+		}
+		w.Write([]byte(resp))
+		return true
 	case "/invoke":
 		fn := strings.Split(text, " ")
-		domains := strings.Join(fn[1:], " ")
-		r := strings.NewReader(domains)
+		args := strings.Join(fn[1:], " ")
+		r := strings.NewReader(args)
 
-		log.Printf("calling function: %s with [%s]", fn[0], domains)
+		log.Printf("calling function: %s with [%s]", fn[0], args)
 
 		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", fn[0]), "application/x-www-form-urlencoded", r)
 		if err != nil {
