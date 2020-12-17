@@ -7,8 +7,8 @@ functions:
     lang: golang-middleware
     handler: ./chatops-bot
     image: hello-world:latest
-    secrets:
-      - super-secret
+    # secrets:
+      # - super-secret
   certinfo:
     lang: dockerfile
     handler: ./certinfo
@@ -17,8 +17,3 @@ functions:
     lang: dockerfile
     handler: ./figlet
     image: figlet:latest
-  hello-python:
-    lang: python3
-    handler: ./hello-python
-    image: hello-python:latest
-
