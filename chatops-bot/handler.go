@@ -82,9 +82,9 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		args := strings.Join(fn[1:], " ")
 		r := strings.NewReader(args)
 
-		if strings.HasPrefix(fn[0], "images") {
+		if strings.HasPrefix(fn[0], "image") {
 			w.Header().Set("content-type", "application/json")
-			w.Write([]byte("{\"image_url\": \"https://waterdrips.heyal.uk/images\""))
+			w.Write([]byte("{\"image_url\": \"https://waterdrips.heyal.uk/images\"}"))
 			w.WriteHeader(http.StatusOK)
 			return true
 		}
