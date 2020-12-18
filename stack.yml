@@ -22,12 +22,12 @@ functions:
 #    secrets:
 #      - r53
 
-  images:
-    lang: golang-middleware
-    handler: ./images
-    image: images:latest
-    secrets:
-      - s3
-    environment:
-      s3_tls: false
-      s3_url: minio.openfaas.svc.cluster.local:9000
+#  images:
+#    lang: golang-middleware
+#    handler: ./images
+#    image: images:latest
+#    secrets:
+#      - s3
+#    environment:
+#      s3_tls: false
+#      s3_url: minio.openfaas.svc.cluster.local:9000
