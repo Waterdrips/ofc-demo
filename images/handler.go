@@ -13,11 +13,9 @@ import (
 const imgPath = "image/image.png"
 
 func Handle(w http.ResponseWriter, r *http.Request) {
-	region := regionName()
-
 	bucketName := bucketName()
 
-	minioClient, connectErr := connectToMinio(region)
+	minioClient, connectErr := connectToMinio()
 	if connectErr != nil {
 		log.Printf("S3/Minio connection error %s\n", connectErr.Error())
 		os.Exit(1)
