@@ -20,7 +20,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	minioClient, connectErr := connectToMinio()
 	if connectErr != nil {
 		log.Printf("S3/Minio connection error %s\n", connectErr.Error())
-		os.Exit(1)
+		w.Write([]byte(connectErr.Error()))
+		w.WriteHeader(http.StatusInternalServerError)
+		return
 	}
 
 	switch r.Method {
