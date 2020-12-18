@@ -13,6 +13,8 @@ import (
 const imgPath = "image/image.png"
 
 func Handle(w http.ResponseWriter, r *http.Request) {
+	region := regionName()
+
 	bucketName := bucketName()
 
 	minioClient, connectErr := connectToMinio()
