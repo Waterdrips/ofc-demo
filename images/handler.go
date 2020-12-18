@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	minio "github.com/minio/minio-go"
+	"github.com/minio/minio-go"
 	"github.com/openfaas/openfaas-cloud/sdk"
 )
 
@@ -56,7 +56,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		logBytes, err := ioutil.ReadAll(obj)
+		imageBytes, err := ioutil.ReadAll(obj)
 		if err != nil {
 			log.Printf("error reading: %s, error: %s", imgPath, err.Error())
 			w.Write([]byte(err.Error()))
@@ -65,13 +65,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Header().Set("content-type", "image/png")
-		w.Write(logBytes)
+		w.Write(imageBytes)
 		w.WriteHeader(http.StatusOK)
 		return
 	}
 
-	w.Write([]byte(""))
-	w.WriteHeader(http.StatusOK)
 	return
 }
 
