@@ -18,7 +18,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	z, err := client.ListHostedZones(&route53.ListHostedZonesInput{})
 	if err != nil {
 		w.Write([]byte(err.Error()))
-		w.WriteHeader(http.StatusOK)
+		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	var records []*route53.ResourceRecordSet

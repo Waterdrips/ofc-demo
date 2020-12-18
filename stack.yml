@@ -19,6 +19,16 @@ functions:
     lang: golang-middleware
     handler: ./route53
     image: route53:latest
-    secrets:
-      - r53
+#    secrets:
+#      - r53
 
+  images:
+    lang: golang-middleware
+    handler: ./images
+    image: images:latest
+    secrets:
+      - s3
+
+
+  YX9Xc925bQf4YYRQD44wj875W
+  4sG9Re1uEf9dpp2P8a281Mb9W
