@@ -50,11 +50,19 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		obj, err := minioClient.GetObject(bucketName, imgPath, minio.GetObjectOptions{})
 
 		if err != nil {
-			log.Printf("error reading: %s, error: %s", imgPath, err.Error())
-			os.Exit(1)
+			log.Printf("error getting: %s, error: %s", imgPath, err.Error())
+			w.Write([]byte(err.Error()))
+			w.WriteHeader(http.StatusInternalServerError)
+			return
 		}
 
-		logBytes, _ := ioutil.ReadAll(obj)
+		logBytes, err := ioutil.ReadAll(obj)
+		if err != nil {
+			log.Printf("error reading: %s, error: %s", imgPath, err.Error())
+			w.Write([]byte(err.Error()))
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
 		w.Header().Set("content-type", "image/png")
 		w.Write(logBytes)
