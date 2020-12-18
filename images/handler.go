@@ -12,7 +12,6 @@ import (
 
 const imgPath = "image/image.png"
 
-
 func Handle(w http.ResponseWriter, r *http.Request) {
 	region := regionName()
 
@@ -61,7 +60,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
 	w.Write([]byte(""))
 	w.WriteHeader(http.StatusOK)
 	return
@@ -83,7 +81,6 @@ func regionName() string {
 	}
 	return regionName
 }
-
 
 func connectToMinio() (*minio.Client, error) {
 
