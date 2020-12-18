@@ -65,8 +65,8 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Header().Set("content-type", "image/png")
-		w.Write(imageBytes)
 		w.WriteHeader(http.StatusOK)
+		w.Write(imageBytes)
 		return
 	}
 
