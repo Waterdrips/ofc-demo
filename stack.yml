@@ -28,3 +28,6 @@ functions:
     image: images:latest
     secrets:
       - s3
+    environment:
+      s3_tls: false
+      s3_url: minio.openfaas.svc.cluster.local:9000
