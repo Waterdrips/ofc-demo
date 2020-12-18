@@ -28,7 +28,3 @@ functions:
     image: images:latest
     secrets:
       - s3
-
-
-  YX9Xc925bQf4YYRQD44wj875W
-  4sG9Re1uEf9dpp2P8a281Mb9W
