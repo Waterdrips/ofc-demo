@@ -77,10 +77,17 @@ func processCommand(w http.ResponseWriter, command, text string) bool {
 		w.Write([]byte(resp))
 		return true
 	case "/invoke":
+
 		fn := strings.Split(text, " ")
 		args := strings.Join(fn[1:], " ")
 		r := strings.NewReader(args)
 
+		if strings.HasPrefix(fn[0], "images") {
+			w.Header().Set("content-type", "application/json")
+			w.Write([]byte("{\"image_url\": \"https://waterdrips.heyal.uk/images\""))
+			w.WriteHeader(http.StatusOK)
+			return true
+		}
 		log.Printf("calling function: %s with [%s]", fn[0], args)
 
 		resp, err := http.Post(fmt.Sprintf("https://waterdrips.heyal.uk/%s", fn[0]), "application/x-www-form-urlencoded", r)
